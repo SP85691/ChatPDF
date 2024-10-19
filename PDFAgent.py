@@ -1,6 +1,5 @@
 import os
 import PyPDF2
-from colorama import Fore
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain_community.vectorstores import Chroma, FAISS
