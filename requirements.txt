@@ -3,12 +3,14 @@ streamlit
 streamlit-chat
 streamlit_pdf_viewer
 faiss-cpu
+sentence-transformers
 langchain
 langserve[all]
 langchain-community
 langchain-experimental
 langchain-groq
 langchain-openai
+langchain-huggingface
 ollama
 fastapi
 sqlalchemy

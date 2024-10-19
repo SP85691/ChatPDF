@@ -7,7 +7,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain_community.chat_models import ChatOllama
 from langchain_openai import ChatOpenAI
 from langchain.chains import ConversationalRetrievalChain
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_community.document_loaders import PyPDFLoader, OnlinePDFLoader
@@ -91,11 +91,18 @@ class MultiPDFDocAgent():
         # Create Document objects from text chunks
         documents = [Document(page_content=text_chunk) for text_chunk in texts]
         
-        underlying_embeddings = HuggingFaceEmbeddings(model_name = "sentence-transformers/all-mpnet-base-v2")
+        model_name = "sentence-transformers/all-mpnet-base-v2"
+        model_kwargs = {'device': 'cpu'}
+        encode_kwargs = {'normalize_embeddings': False}
+        underlying_embeddings = HuggingFaceEmbeddings(
+            model_name=model_name,
+            model_kwargs=model_kwargs,
+            encode_kwargs=encode_kwargs
+        )
         store = LocalFileStore("./cache/")
         print("Generating Embeddings and Saving it to the './cache/'...")
         cached_embedder = CacheBackedEmbeddings.from_bytes_store(
-            underlying_embeddings, store, namespace=underlying_embeddings.model
+            underlying_embeddings, store, namespace=underlying_embeddings.model_name
         )
         
         # Create a Chroma Vector Store
