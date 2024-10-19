@@ -7,7 +7,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain_community.chat_models import ChatOllama
 from langchain_openai import ChatOpenAI
 from langchain.chains import ConversationalRetrievalChain
-from langchain_community.embeddings import OllamaEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_community.document_loaders import PyPDFLoader, OnlinePDFLoader
@@ -91,7 +91,7 @@ class MultiPDFDocAgent():
         # Create Document objects from text chunks
         documents = [Document(page_content=text_chunk) for text_chunk in texts]
         
-        underlying_embeddings = OllamaEmbeddings(model="nomic-embed-text")
+        underlying_embeddings = HuggingFaceEmbeddings(model_name = "sentence-transformers/all-mpnet-base-v2")
         store = LocalFileStore("./cache/")
         print("Generating Embeddings and Saving it to the './cache/'...")
         cached_embedder = CacheBackedEmbeddings.from_bytes_store(
