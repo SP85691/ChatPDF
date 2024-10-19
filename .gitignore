@@ -6,3 +6,4 @@ venv/
 llm_cache.db
 uploaded_pdfs/
 __pycache__/
+cache/

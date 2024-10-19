@@ -40,6 +40,7 @@ if upload_method == "Local Computer":
         with st.sidebar:
             # Checkbox for selecting between "groq" and "ollama"
             st.header("Select Language Model")
+            st.warning("For now, only Groq is supported.")
             selected_model = st.selectbox("Select a Model", ("Groq", "Ollama", "OpenAI", "Google Palm"), placeholder="Please Select a Model")
             st.info(f"Selected Model: {selected_model}")
             # Temperature slider

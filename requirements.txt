@@ -1,12 +1,14 @@
 python-dotenv
 streamlit
 streamlit-chat
+streamlit_pdf_viewer
 faiss-cpu
 langchain
 langserve[all]
 langchain-community
 langchain-experimental
 langchain-groq
+langchain-openai
 ollama
 fastapi
 sqlalchemy
@@ -17,4 +19,5 @@ accelerate
 pandas
 chainlit
 PyPDF2
+pypdf
 groq

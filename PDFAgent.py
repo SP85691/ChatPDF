@@ -6,7 +6,6 @@ from langchain_groq import ChatGroq
 from langchain_community.vectorstores import Chroma, FAISS
 from langchain.memory import ConversationBufferMemory
 from langchain_community.chat_models import ChatOllama
-from langchain_google_genai import GoogleGenerativeAI
 from langchain_openai import ChatOpenAI
 from langchain.chains import ConversationalRetrievalChain
 from langchain_community.embeddings import OllamaEmbeddings
